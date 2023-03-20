@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>3.14 flex布局</title>
+    <style>
+        .one {
+            display: flex;
+            width: 600px; 
+            height: 100px;
+            justify-content: space-between;
+        }
+        .two {
+            display: flex;
+            width: 600px; 
+            height: 800px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .three {
+            display: flex;
+            width: 600px; 
+            height: 150px;
+            justify-content: center;
+        }
+        .box {
+            width: 240px; 
+            height: 180px;
+            border: 1px solid #000;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <div class="one">
+        <img src="" width="200" height="80" />
+        <div>
+            <img src="" width="50" height="50" />
+            xxx
+        </div>
+    </div>
+
+    <div class="two">
+        <div class="box"> </div>
+        <div class="box"> </div>
+        <div class="box"> </div>
+        <div class="box"> </div>
+        <div class="box"> </div>
+    </div>
+
+    <div class="three">
+        <div>xxx</div>
+        <div>xxxxxxxx</div>
+    </div>
+   
+</body>
+
+</html>
