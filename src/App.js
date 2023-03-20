@@ -1,20 +1,24 @@
-import React from 'react';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import React from "react";
+import {
+  LaptopOutlined,
+  NotificationOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
-import MyFirstComponent from './components/my-first-component';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Breadcrumb, Layout, Menu, theme } from "antd";
+import MyFirstComponent from "./components/my-first-component";
+import { Link, Route, Routes } from "react-router-dom";
 
-import Class1 from './pages/class1';
-import Class2 from './pages/class2';
-import './App.css';
+import Class1 from "./pages/class1";
+import Class2 from "./pages/class2";
+import "./App.css";
 
 const { Header, Content, Sider } = Layout;
 
-const items1 = ['1', '2', '3'].map((key) => ({
+/* const items1 = ["1", "2", "3"].map((key) => ({
   key,
   label: `nav ${key}`,
-}));
+})); */
 
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
   (icon, index) => {
@@ -33,11 +37,8 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
         };
       }),
     };
-  },
+  }
 );
-
-
-
 
 const App = () => {
   const {
@@ -54,8 +55,13 @@ const App = () => {
     <Layout>
       <Header className="header">
         <div className="logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} >
-        <Menu.Item key="1">
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={["2"]}
+          /* items={items1} */
+        >
+          <Menu.Item key="1">
             <Link to="/class1">class1</Link>
           </Menu.Item>
           <Menu.Item key="2">
@@ -67,14 +73,14 @@ const App = () => {
         <Sider width={200} style={{ background: colorBgContainer }}>
           <Menu
             mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            style={{ height: '100%', borderRight: 0 }}
+            defaultSelectedKeys={["1"]}
+            defaultOpenKeys={["sub1"]}
+            style={{ height: "100%", borderRight: 0 }}
             items={items2}
           />
         </Sider>
-        <Layout style={{ padding: '0 24px 24px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
+        <Layout style={{ padding: "0 24px 24px" }}>
+          <Breadcrumb style={{ margin: "16px 0" }}>
             <Breadcrumb.Item>Home</Breadcrumb.Item>
             <Breadcrumb.Item>List</Breadcrumb.Item>
             <Breadcrumb.Item>App</Breadcrumb.Item>
@@ -87,20 +93,13 @@ const App = () => {
               background: colorBgContainer,
             }}
           >
-             
-              
-              <Routes>
-                 <Route path="/class1" Component={Class1} />
-                 <Route path="/class2" Component={Class2} />
-               </Routes> 
-               
-              <MyFirstComponent />
+            <Routes>
+              <Route path="/class1" Component={Class1} />
+              <Route path="/class2" Component={Class2} />
+            </Routes>
 
-
+            <MyFirstComponent />
           </Content>
-
-         
-
         </Layout>
       </Layout>
     </Layout>
