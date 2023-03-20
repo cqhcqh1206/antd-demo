@@ -1,8 +1,6 @@
 import React from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 
-import { Carousel } from 'antd';
-import { Collapse } from 'antd';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import MyFirstComponent from './components/my-first-component';
 import { Link, Route, Routes } from 'react-router-dom';
@@ -45,12 +43,12 @@ const App = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-  const onChange = (currentSlide) => {
+  /* const onChange = (currentSlide) => {
     console.log(currentSlide);
   };
   const onChangetwo = (key) => {
     console.log(key);
-  };
+  }; */
 
   return (
     <Layout>
@@ -91,10 +89,10 @@ const App = () => {
           >
              
               
-              {/* <Routes>
+              <Routes>
                  <Route path="/class1" Component={Class1} />
                  <Route path="/class2" Component={Class2} />
-               </Routes>  */}
+               </Routes> 
                
               <MyFirstComponent />
 
