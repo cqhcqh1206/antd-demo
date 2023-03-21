@@ -1,6 +1,3 @@
-import React from "react";
-/* import MyFirstComponent from "../../components/my-first-component";
-import MyTwoComponent from "../../components/my-two-component"; */
 import { Button, Form, Input, InputNumber } from 'antd';
 const layout = {
   labelCol: {
@@ -39,7 +36,7 @@ const App = () => (
   >
     <Form.Item
       name={['user', 'name']}
-      label="姓名"
+      label="Name"
       rules={[
         {
           required: true,
@@ -50,7 +47,7 @@ const App = () => (
     </Form.Item>
     <Form.Item
       name={['user', 'email']}
-      label="部门"
+      label="Email"
       rules={[
         {
           type: 'email',
@@ -61,7 +58,7 @@ const App = () => (
     </Form.Item>
     <Form.Item
       name={['user', 'age']}
-      label="工号"
+      label="Age"
       rules={[
         {
           type: 'number',
@@ -72,10 +69,10 @@ const App = () => (
     >
       <InputNumber />
     </Form.Item>
-    <Form.Item name={['user', 'website']} label="手机号">
+    <Form.Item name={['user', 'website']} label="Website">
       <Input />
     </Form.Item>
-    <Form.Item name={['user', 'introduction']} label="简介">
+    <Form.Item name={['user', 'introduction']} label="Introduction">
       <Input.TextArea />
     </Form.Item>
     <Form.Item
@@ -90,19 +87,4 @@ const App = () => (
     </Form.Item>
   </Form>
 );
-
-
-
-function Class2() {
-  return (
-    <div>
-      <App/>
-      {/* <MyFirstComponent propsName={"propsName"} />
-      <MyTwoComponent propsName={"propsName 1"} />
-      <MyTwoComponent propsName={"propsName 2"} />
-      <MyTwoComponent propsName={"propsName 3"} /> */}
-    </div>
-  );
-}
-
-export default Class2;
+export default App;

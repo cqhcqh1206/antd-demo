@@ -6,11 +6,12 @@ import {
 } from "@ant-design/icons";
 
 import { Breadcrumb, Layout, Menu, theme } from "antd";
-import MyFirstComponent from "./components/my-first-component";
+/* import MyFirstComponent from "./components/my-first-component"; */
 import { Link, Route, Routes } from "react-router-dom";
 
 import Class1 from "./pages/class1";
 import Class2 from "./pages/class2";
+import Signin from "./pages/signin";
 import "./App.css";
 
 const { Header, Content, Sider } = Layout;
@@ -20,20 +21,20 @@ const { Header, Content, Sider } = Layout;
   label: `nav ${key}`,
 })); */
 
+
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
   (icon, index) => {
     const key = String(index + 1);
-
     return {
       key: `sub${key}`,
       icon: React.createElement(icon),
       label: `subnav ${key}`,
-      children: new Array(4).fill(null).map((_, j) => {
+      // children: new Array(4).fill(null).map((_, j) => {
+      children: ['/signin', '/class2', '/class3', '/class4'].map((item, j) => {
         const subKey = index * 4 + j + 1;
         return {
           key: subKey,
-          label: `option${subKey}`,
-          link: <Link to="/class1" />,
+          label: <Link to={item}>{`option${subKey}`}</Link>,
         };
       }),
     };
@@ -96,9 +97,10 @@ const App = () => {
             <Routes>
               <Route path="/class1" Component={Class1} />
               <Route path="/class2" Component={Class2} />
+              <Route path="/signin" Component={Signin} />
             </Routes>
 
-            <MyFirstComponent />
+            {/* <MyFirstComponent /> */}
           </Content>
         </Layout>
       </Layout>
