@@ -13,6 +13,7 @@ import Class1 from "./pages/class1";
 import Class2 from "./pages/class2";
 import Signin from "./pages/signin";
 import Imformation from "./pages/information";
+import Calendar from "./pages/calendar";
 import "./App.css";
 
 const { Header, Content, Sider } = Layout;
@@ -22,7 +23,6 @@ const { Header, Content, Sider } = Layout;
   label: `nav ${key}`,
 })); */
 
-
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
   (icon, index) => {
     const key = String(index + 1);
@@ -31,13 +31,16 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
       icon: React.createElement(icon),
       label: `subnav ${key}`,
       // children: new Array(4).fill(null).map((_, j) => {
-      children: ['/signin', '/information', '/class3', '/class4'].map((item, j) => {
-        const subKey = index * 4 + j + 1;
-        return {
-          key: subKey,
-          label: <Link to={item}>{`option${subKey}`}</Link>,
-        };
-      }),
+      children: ["/signin", "/information", "/calendar", "/class4"].map(
+        (item, j) => {
+          const subKey = index * 4 + j + 1;
+          var cars = ["登录", "个人信息", "日历", "空"];
+          return {
+            key: subKey,
+            label: <Link to={item}>{` ${cars[subKey - 1]} `}</Link>,
+          };
+        }
+      ),
     };
   }
 );
@@ -100,6 +103,7 @@ const App = () => {
               <Route path="/class2" Component={Class2} />
               <Route path="/signin" Component={Signin} />
               <Route path="/information" Component={Imformation} />
+              <Route path="/calendar" Component={Calendar} />
             </Routes>
 
             {/* <MyFirstComponent /> */}
