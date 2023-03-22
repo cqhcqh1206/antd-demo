@@ -1,4 +1,4 @@
-import { Button, Form, Input, InputNumber } from 'antd';
+import { Button, Form, Input, InputNumber } from "antd";
 const layout = {
   labelCol: {
     span: 8,
@@ -10,13 +10,13 @@ const layout = {
 
 /* eslint-disable no-template-curly-in-string */
 const validateMessages = {
-  required: '${label} is required!',
+  required: "${label} is required!",
   types: {
-    email: '${label} is not a valid email!',
-    number: '${label} is not a valid number!',
+    email: "${label} is not a valid email!",
+    number: "${label} is not a valid number!",
   },
   number: {
-    range: '${label} must be between ${min} and ${max}',
+    range: "${label} must be between ${min} and ${max}",
   },
 };
 /* eslint-enable no-template-curly-in-string */
@@ -35,8 +35,8 @@ const App = () => (
     validateMessages={validateMessages}
   >
     <Form.Item
-      name={['user', 'name']}
-      label="Name"
+      name={["user", "name"]}
+      label="姓名"
       rules={[
         {
           required: true,
@@ -46,22 +46,22 @@ const App = () => (
       <Input />
     </Form.Item>
     <Form.Item
-      name={['user', 'email']}
-      label="Email"
+      name={["user", "email"]}
+      label="部门"
       rules={[
         {
-          type: 'email',
+          type: "email",
         },
       ]}
     >
       <Input />
     </Form.Item>
     <Form.Item
-      name={['user', 'age']}
-      label="Age"
+      name={["user", "age"]}
+      label="工号"
       rules={[
         {
-          type: 'number',
+          type: "number",
           min: 0,
           max: 99,
         },
@@ -69,10 +69,10 @@ const App = () => (
     >
       <InputNumber />
     </Form.Item>
-    <Form.Item name={['user', 'website']} label="Website">
+    <Form.Item name={["user", "website"]} label="手机号">
       <Input />
     </Form.Item>
-    <Form.Item name={['user', 'introduction']} label="Introduction">
+    <Form.Item name={["user", "introduction"]} label="简介">
       <Input.TextArea />
     </Form.Item>
     <Form.Item
@@ -82,7 +82,7 @@ const App = () => (
       }}
     >
       <Button type="primary" htmlType="submit">
-        Submit
+        修改
       </Button>
     </Form.Item>
   </Form>

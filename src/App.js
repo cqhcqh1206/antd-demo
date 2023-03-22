@@ -12,6 +12,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import Class1 from "./pages/class1";
 import Class2 from "./pages/class2";
 import Signin from "./pages/signin";
+import Imformation from "./pages/information";
 import "./App.css";
 
 const { Header, Content, Sider } = Layout;
@@ -30,7 +31,7 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
       icon: React.createElement(icon),
       label: `subnav ${key}`,
       // children: new Array(4).fill(null).map((_, j) => {
-      children: ['/signin', '/class2', '/class3', '/class4'].map((item, j) => {
+      children: ['/signin', '/information', '/class3', '/class4'].map((item, j) => {
         const subKey = index * 4 + j + 1;
         return {
           key: subKey,
@@ -98,6 +99,7 @@ const App = () => {
               <Route path="/class1" Component={Class1} />
               <Route path="/class2" Component={Class2} />
               <Route path="/signin" Component={Signin} />
+              <Route path="/information" Component={Imformation} />
             </Routes>
 
             {/* <MyFirstComponent /> */}
