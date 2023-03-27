@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input, Space } from "antd";
-import { useState } from "react";
+import { Button, Checkbox, Form, Input, Space, message } from "antd";
+import http from "../../utils/http";
+
 const App = () => {
-  const [size, setSize] = useState("large");
-  const onFinish = (values) => {
+  const [size, setSize] = useState({
+    account: "",
+    psd: "",
+  });
+  /* const onFinish = (values) => {
     console.log("Received values of form: ", values);
-  };
+  }; */
   return (
     <Form
       name="normal_login"
@@ -14,7 +18,7 @@ const App = () => {
       initialValues={{
         remember: true,
       }}
-      onFinish={onFinish}
+      /* onFinish={onFinish} */
     >
       <Form.Item
         name="username"
@@ -27,6 +31,14 @@ const App = () => {
       >
         <Input
           prefix={<UserOutlined className="site-form-item-icon" />}
+          value={size.account}
+          onChange={(e) => {
+            console.log("e", e);
+            setSize({
+              ...size,
+              account: e.target.value,
+            });
+          }}
           placeholder="Username"
         />
       </Form.Item>
@@ -42,6 +54,14 @@ const App = () => {
         <Input
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
+          value={size.psd}
+          onChange={(e) => {
+            console.log("e", e);
+            setSize({
+              ...size,
+              psd: e.target.value,
+            });
+          }}
           placeholder="Password"
         />
       </Form.Item>
@@ -64,7 +84,23 @@ const App = () => {
           >
             登录
           </Button>
-          <Button /* type="primary" htmlType="submit" className="login-form-button" */
+          <Button
+            onClick={() => {
+              http
+                .post("http://www.tewx.cn:9089/user/register", {
+                  account: size.account,
+                  psd: size.psd,
+                })
+                .then((res) => {
+                  console.log("then res", res);
+                  if (res.data.code === 0) {
+                    message.error(res.data.msg);
+                  }
+                  if (res.data.code === 1) {
+                    message.success(res.data.data);
+                  }
+                });
+            }}
           >
             注册
           </Button>
