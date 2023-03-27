@@ -4,7 +4,8 @@ import { Button, Checkbox, Form, Input, Space, message } from "antd";
 import http from "../../utils/http";
 
 const App = () => {
-  const [size, setSize] = useState({
+  const { size, setSize } = useState("large");
+  const [state, setState] = useState({
     account: "",
     psd: "",
   });
@@ -31,11 +32,11 @@ const App = () => {
       >
         <Input
           prefix={<UserOutlined className="site-form-item-icon" />}
-          value={size.account}
+          value={state.account}
           onChange={(e) => {
             console.log("e", e);
-            setSize({
-              ...size,
+            setState({
+              ...state,
               account: e.target.value,
             });
           }}
@@ -54,11 +55,11 @@ const App = () => {
         <Input
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
-          value={size.psd}
+          value={state.psd}
           onChange={(e) => {
             console.log("e", e);
-            setSize({
-              ...size,
+            setState({
+              ...state,
               psd: e.target.value,
             });
           }}
@@ -88,8 +89,8 @@ const App = () => {
             onClick={() => {
               http
                 .post("http://www.tewx.cn:9089/user/register", {
-                  account: size.account,
-                  psd: size.psd,
+                  account: state.account,
+                  psd: state.psd,
                 })
                 .then((res) => {
                   console.log("then res", res);
