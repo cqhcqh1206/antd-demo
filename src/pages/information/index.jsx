@@ -1,90 +1,130 @@
-import { Button, Form, Input, InputNumber } from "antd";
-const layout = {
+import { ExclamationCircleOutlined } from "@ant-design/icons";
+import { Button, Modal, Space, Form, Input} from "antd";
+import { useState } from "react";
+const LocalizedModal = () => {
+  const [open, setOpen] = useState(false);
+  const showModal = () => {
+    setOpen(true);
+  };
+  const hideModal = () => {
+    setOpen(false);
+  };
+
+  const [form] = Form.useForm();
+  const onFinish = (values) => {
+    console.log("Received values of form: ", values);
+  };
+
+  return (
+    <>
+      <Button type="primary" onClick={showModal}>
+        Modal
+      </Button>
+      <Modal
+        title="Modal"
+        open={open}
+        onOk={hideModal}
+        onCancel={hideModal}
+        okText="确认"
+        cancelText="取消"
+      >
+        <Form
+          {...formItemLayout}
+          form={form}
+          name="register"
+          onFinish={onFinish}
+          
+          style={{
+            maxWidth: 600,
+          }}
+          scrollToFirstError
+        >
+          <Form.Item
+            name="password"
+            label="Password"
+            rules={[
+              {
+                required: true,
+                message: "Please input your password!",
+              },
+            ]}
+            hasFeedback
+          >
+            <Input.Password />
+          </Form.Item>
+
+          <Form.Item
+            name="confirm"
+            label="Confirm Password"
+            dependencies={["password"]}
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: "Please confirm your password!",
+              },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue("password") === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(
+                    new Error(
+                      "The two passwords that you entered do not match!"
+                    )
+                  );
+                },
+              }),
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
+        </Form>
+      </Modal>
+    </>
+  );
+};
+
+const formItemLayout = {
   labelCol: {
-    span: 8,
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 8,
+    },
   },
   wrapperCol: {
-    span: 16,
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 16,
+    },
   },
 };
 
-/* eslint-disable no-template-curly-in-string */
-const validateMessages = {
-  required: "${label} is required!",
-  types: {
-    email: "${label} is not a valid email!",
-    number: "${label} is not a valid number!",
-  },
-  number: {
-    range: "${label} must be between ${min} and ${max}",
-  },
-};
-/* eslint-enable no-template-curly-in-string */
 
-const onFinish = (values) => {
-  console.log(values);
+const App = () => {
+  const [modal, contextHolder] = Modal.useModal();
+  const confirm = () => {
+    modal.confirm({
+      title: "Confirm",
+      icon: <ExclamationCircleOutlined />,
+      content: "Bla bla ...",
+      okText: "确认",
+      cancelText: "取消",
+    });
+  };
+
+  return (
+    <>
+      <Space>
+        <LocalizedModal />
+        <Button onClick={confirm}>Confirm</Button>
+      </Space>
+      {contextHolder}
+    </>
+  );
 };
-const App = () => (
-  <Form
-    {...layout}
-    name="nest-messages"
-    onFinish={onFinish}
-    style={{
-      maxWidth: 600,
-    }}
-    validateMessages={validateMessages}
-  >
-    <Form.Item
-      name={["user", "name"]}
-      label="姓名"
-      rules={[
-        {
-          required: true,
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
-    <Form.Item
-      name={["user", "email"]}
-      label="部门"
-      rules={[
-        {
-          type: "email",
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
-    <Form.Item
-      name={["user", "age"]}
-      label="工号"
-      rules={[
-        {
-          type: "number",
-          min: 0,
-          max: 99,
-        },
-      ]}
-    >
-      <InputNumber />
-    </Form.Item>
-    <Form.Item name={["user", "website"]} label="手机号">
-      <Input />
-    </Form.Item>
-    <Form.Item name={["user", "introduction"]} label="简介">
-      <Input.TextArea />
-    </Form.Item>
-    <Form.Item
-      wrapperCol={{
-        ...layout.wrapperCol,
-        offset: 8,
-      }}
-    >
-      <Button type="primary" htmlType="submit">
-        修改
-      </Button>
-    </Form.Item>
-  </Form>
-);
 export default App;
