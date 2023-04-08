@@ -17,6 +17,7 @@ import Calendar from "./pages/calendar";
 import Personal from "./pages/personal";
 import Touxiang from "./pages/touxiang";
 import Submit from "./pages/submit";
+import Class5 from "./pages/class5";
 import "./App.css";
 
 const { Header, Content, Sider } = Layout;
@@ -34,7 +35,7 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
       icon: React.createElement(icon),
       label: `subnav ${key}`,
       // children: new Array(4).fill(null).map((_, j) => {
-      children: ["/signin", "/information", "/submit", "/personal"].map(
+      children: ["/signin", "/information", "/submit", "/class5"].map(
         (item, j) => {
           const subKey = index * 4 + j + 1;
           var cars = ["登录", "个人信息", "日历", "修改密码"];
@@ -110,6 +111,7 @@ const App = () => {
               <Route path="/personal" Component={Personal} />
               <Route path="/touxiang" Component={Touxiang} />
               <Route path="/submit" Component={Submit} />
+              <Route path="/class5" Component={Class5} />
             </Routes>
 
             {/* <MyFirstComponent /> */}
