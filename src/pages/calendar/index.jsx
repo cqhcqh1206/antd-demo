@@ -1,7 +1,7 @@
-import { Calendar } from 'antd';
-import { Tree } from 'antd';
+import { Calendar } from "antd";
+import { Tree } from "antd";
 
-const dig = (path = '0', level = 3) => {
+const dig = (path = "0", level = 3) => {
   const list = [];
   for (let i = 0; i < 10; i += 1) {
     const key = `${path}-${i}`;
@@ -20,9 +20,13 @@ const treeData = dig();
 
 const App = () => {
   const onPanelChange = (value, mode) => {
-    console.log(value.format('YYYY-MM-DD'), mode);
+    console.log(value.format("YYYY-MM-DD"), mode);
   };
-  return <Calendar onPanelChange={onPanelChange} />;
-  <Tree treeData={treeData} height={233} defaultExpandAll />;
+  return (
+    <>
+      <Calendar onPanelChange={onPanelChange} />
+      <Tree treeData={treeData} height={233} defaultExpandAll />
+    </>
+  );
 };
 export default App;
