@@ -19,6 +19,7 @@ import Touxiang from "./pages/touxiang";
 import Submit from "./pages/submit";
 import Class5 from "./pages/class5";
 import Progress from "./pages/progress";
+import Openai from "./pages/openai";
 import "./App.css";
 
 const { Header, Content, Sider } = Layout;
@@ -31,21 +32,33 @@ const { Header, Content, Sider } = Layout;
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
   (icon, index) => {
     const key = String(index + 1);
+    const name = ["概要", "语言模型", "其他"];
     return {
       key: `sub${key}`,
       icon: React.createElement(icon),
-      label: `subnav ${key}`,
-      // children: new Array(4).fill(null).map((_, j) => {
-      children: ["/class1", "/information", "/calendar", "/progress"].map(
-        (item, j) => {
-          const subKey = index * 4 + j + 1;
-          var cars = ["通知", "介绍", "日历", "修改密码"];
-          return {
-            key: subKey,
-            label: <Link to={item}>{` ${cars[subKey - 1]} `}</Link>,
-          };
-        }
-      ),
+      label: name[index],
+      children: [
+        "/class1",
+        "/information",
+        "/calendar",
+        "/progress",
+        "/openai",
+      ].map((item, j) => {
+        const subKey = index * 4 + j + 1;
+        var cars = [
+          "通知",
+          "介绍",
+          "日历",
+          "修改密码",
+          "open ai",
+          "claude+",
+          "通义千问",
+        ];
+        return {
+          key: subKey,
+          label: <Link to={item}>{` ${cars[subKey - 1]} `}</Link>,
+        };
+      }),
     };
   }
 );
@@ -114,8 +127,8 @@ const App = () => {
               <Route path="/submit" Component={Submit} />
               <Route path="/class5" Component={Class5} />
               <Route path="/progress" Component={Progress} />
+              <Route path="/openai" Component={Openai} />
             </Routes>
-
             {/* <MyFirstComponent /> */}
           </Content>
         </Layout>
