@@ -21,6 +21,7 @@ import Class5 from "./pages/class5";
 import Progress from "./pages/progress";
 import Openai from "./pages/openai";
 import "./App.css";
+import { Group } from "antd/es/avatar";
 
 const { Header, Content, Sider } = Layout;
 
@@ -29,39 +30,70 @@ const { Header, Content, Sider } = Layout;
   label: `nav ${key}`,
 })); */
 
-const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
-  (icon, index) => {
-    const key = String(index + 1);
-    const name = ["概要", "语言模型", "其他"];
-    return {
-      key: `sub${key}`,
-      icon: React.createElement(icon),
-      label: name[index],
-      children: [
-        "/class1",
-        "/information",
-        "/calendar",
-        "/progress",
-        "/openai",
-      ].map((item, j) => {
-        const subKey = index * 4 + j + 1;
-        var cars = [
-          "通知",
-          "介绍",
-          "日历",
-          "修改密码",
-          "open ai",
-          "claude+",
-          "通义千问",
-        ];
-        return {
-          key: subKey,
-          label: <Link to={item}>{` ${cars[subKey - 1]} `}</Link>,
-        };
-      }),
-    };
-  }
-);
+const items2 = [
+  {
+    icon: UserOutlined,
+    name: "概要",
+    group: "/group1",
+    items: [
+      {
+        name: "通知",
+        link: "/class1",
+      },
+      {
+        name: "介绍",
+        link: "/personal",
+      },
+      {
+        name: "日历",
+        link: "/calendar",
+      },
+      {
+        name: "修改密码",
+        link: "/information",
+      },
+    ],
+  },
+  {
+    icon: UserOutlined,
+    name: "语言模型",
+    group: "/group2",
+    items: [
+      {
+        name: "openai",
+        link: "/class1",
+      },
+    ],
+  },
+  {
+    icon: UserOutlined,
+    name: "其他",
+    group: "/group3",
+    items: [
+      {
+        name: "openai",
+        link: "/class1",
+      },
+    ],
+  },
+].map((data, i) => {
+  const { icon, group, name, items } = data;
+  return {
+    key: i,
+    icon: React.createElement(icon),
+    label: name,
+    children: items.map((item, j) => {
+      return {
+        key: i + "/" + j,
+        label: (
+          <Link to={group + item.link} key={j}>
+            {item.name}
+          </Link>
+        ),
+      };
+    }),
+  };
+});
 
 const App = () => {
   const {
@@ -117,12 +149,12 @@ const App = () => {
             }}
           >
             <Routes>
-              <Route path="/class1" Component={Class1} />
+              <Route path="/group1/class1" Component={Class1} />
               <Route path="/class2" Component={Class2} />
               <Route path="/signin" Component={Signin} />
-              <Route path="/information" Component={Imformation} />
-              <Route path="/calendar" Component={Calendar} />
-              <Route path="/personal" Component={Personal} />
+              <Route path="/group1/information" Component={Imformation} />
+              <Route path="/group1/calendar" Component={Calendar} />
+              <Route path="/group1/personal" Component={Personal} />
               <Route path="/touxiang" Component={Touxiang} />
               <Route path="/submit" Component={Submit} />
               <Route path="/class5" Component={Class5} />
