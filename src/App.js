@@ -36,10 +36,10 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
       icon: React.createElement(icon),
       label: `subnav ${key}`,
       // children: new Array(4).fill(null).map((_, j) => {
-      children: ["/signin", "/information", "/submit", "/progress"].map(
+      children: ["/class1", "/information", "/calendar", "/progress"].map(
         (item, j) => {
           const subKey = index * 4 + j + 1;
-          var cars = ["登录", "个人信息", "日历", "修改密码"];
+          var cars = ["通知", "介绍", "日历", "修改密码"];
           return {
             key: subKey,
             label: <Link to={item}>{` ${cars[subKey - 1]} `}</Link>,
@@ -68,7 +68,7 @@ const App = () => {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={["2"]}
+          defaultSelectedKeys={["1"]}
           /* items={items1} */
         >
           <Menu.Item key="1">
