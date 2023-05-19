@@ -61,7 +61,7 @@ const items2 = [
     items: [
       {
         name: "openai",
-        link: "/class1",
+        link: "/openai",
       },
     ],
   },
@@ -159,7 +159,7 @@ const App = () => {
               <Route path="/submit" Component={Submit} />
               <Route path="/class5" Component={Class5} />
               <Route path="/progress" Component={Progress} />
-              <Route path="/openai" Component={Openai} />
+              <Route path="/group2/openai" Component={Openai} />
             </Routes>
             {/* <MyFirstComponent /> */}
           </Content>
