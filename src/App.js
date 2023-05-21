@@ -72,7 +72,7 @@ const items2 = [
     items: [
       {
         name: "openai",
-        link: "/class1",
+        link: "/submit",
       },
     ],
   },
@@ -156,7 +156,7 @@ const App = () => {
               <Route path="/group1/calendar" Component={Calendar} />
               <Route path="/group1/personal" Component={Personal} />
               <Route path="/touxiang" Component={Touxiang} />
-              <Route path="/submit" Component={Submit} />
+              <Route path="/group3/submit" Component={Submit} />
               <Route path="/class5" Component={Class5} />
               <Route path="/progress" Component={Progress} />
               <Route path="/group2/openai" Component={Openai} />
