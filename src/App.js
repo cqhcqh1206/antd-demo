@@ -71,7 +71,7 @@ const items2 = [
     group: "/group3",
     items: [
       {
-        name: "openai",
+        name: "杂谈",
         link: "/submit",
       },
     ],
