@@ -49,7 +49,7 @@ const items2 = [
         link: "/calendar",
       },
       {
-        name: "修改密码",
+        name: "好的",
         link: "/information",
       },
     ],
